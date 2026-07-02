@@ -209,9 +209,7 @@ class Config:
         metadata=metadata(
             """The flavor of the Python Standalone Builds release to use.
 
-            Currently accepts 'install_only', 'install_only_stripped',
-            'freethreaded-install_only', 'freethreaded-install_only_stripped' and any '-full'
-            flavor.
+            Currently accepts 'install_only', 'install_only_stripped' and any '-full' flavor.
 
             ```{note}
             To selected a free-threaded install_only or install_only_stripped build, use the 't'
