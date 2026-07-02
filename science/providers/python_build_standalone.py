@@ -220,7 +220,7 @@ class Config:
 
             ```{caution}
             Older Python Standalone Builds do not provide install_only and install_only_stripped
-            distributions; so you should check
+            distributions for free-threaded builds; so you should check
             [their releases](https://github.com/astral-sh/python-build-standalone/releases) for
             availability.
             ```
