@@ -212,7 +212,7 @@ class Config:
             Currently accepts 'install_only', 'install_only_stripped' and any '-full' flavor.
 
             ```{note}
-            To selected a free-threaded install_only or install_only_stripped build, use the 't'
+            To select a free-threaded install_only or install_only_stripped build, use the 't'
             version suffix.
             ```
 
