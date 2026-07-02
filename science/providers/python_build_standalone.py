@@ -188,7 +188,9 @@ class Config:
         metadata=metadata(
             """The flavor of the Python Standalone Builds release to use.
 
-            Currently accepts 'install_only', 'install_only_stripped' and any '-full' flavor.
+            Currently accepts 'install_only', 'install_only_stripped',
+            'freethreaded-install_only', 'freethreaded-install_only_stripped' and any '-full'
+            flavor.
 
             ```{caution}
             Python Standalone Builds does not provide all variants of '-full' flavors for all Python
@@ -535,7 +537,7 @@ class PythonBuildStandalone(Provider[Config]):
         )
         placeholders = {}
         match self._distributions.flavor:
-            case "install_only" | "install_only_stripped":
+            case flavor if flavor.endswith(("install_only", "install_only_stripped")):
                 if platform_spec.is_windows:
                     placeholders[Identifier("python")] = "python\\python.exe"
                 else:
@@ -552,6 +554,7 @@ class PythonBuildStandalone(Provider[Config]):
             case flavor:
                 raise InputError(
                     "PythonBuildStandalone currently only understands 'install_only', "
-                    f"'install_only_stripped' and '*-full' flavors of distribution; given: {flavor}"
+                    "'install_only_stripped' (optionally 'freethreaded-' prefixed) and '*-full' "
+                    f"flavors of distribution; given: {flavor}"
                 )
         return Distribution(id=self.id, file=file, placeholders=FrozenDict(placeholders))
